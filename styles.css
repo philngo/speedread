@@ -1,6 +1,6 @@
 body {
     min-height: 100px;
-    min-width: 300px;
+    min-width: 400px;
 }
 
 button {
@@ -33,7 +33,7 @@ hr#bottom { top: 90px; }
 
 table{
     table-layout: fixed;
-    width: 300px;
+    width: 400px;
 }
 
 col#first { width: 35%; }
