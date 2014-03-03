@@ -16,7 +16,18 @@ $( document ).ready(function() {
     var wait_time_remaining = 0;
     var waiting = false;
     var interval = null;
+
+    $("input").keypress(function(key){
+        if(key.which == 13) {
+            startStop();
+        }
+    });
+
     $("#go").click(function() {
+        startStop();
+    });
+
+    function startStop() {
         if (interval == null) {
             getSelectedText();
             interval = setInterval(writeWord,delay);
@@ -26,7 +37,8 @@ $( document ).ready(function() {
             interval = null;
             $("#go").html("Start");
         }
-    });
+
+    }
 
     function writeWord() {
         ticks++;
