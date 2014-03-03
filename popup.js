@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+    var ticks = 0;
     var text = [];
     var offset = [];
     var text_length = 0;
@@ -28,6 +29,7 @@ $( document ).ready(function() {
     });
 
     function writeWord() {
+        ticks++;
         if (display_time_remaining > 0) {
             displayWord(text[i], offset[i]);
             display_time_remaining -= delay;
@@ -40,11 +42,13 @@ $( document ).ready(function() {
             } else {
                 i+=1;
                 if (i == text_length) {
-                    displayWord("DONE! ", 5);
+                    var wpm = Math.round(text_length * 60000 / ticks / delay)
+                    displayWord("DONE!-WPM: " + wpm, 5);
                     clearInterval(interval);
                     interval = null;
                     $("#go").html("Start");
                     i = 0;
+                    ticks = 0;
                 }
                 display_time_remaining = display;
                 waiting = false;
@@ -78,11 +82,11 @@ $( document ).ready(function() {
     });
 
     $("button#plus").click(function(){
-        display -= 10;
+        display -= 5;
     });
 
     $("button#minus").click(function(){
-        display += 10;
+        display += 5;
     });
 });
 
