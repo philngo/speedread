@@ -1,0 +1,49 @@
+body {
+    min-height: 100px;
+    min-width: 300px;
+}
+
+button {
+    float: right;
+}
+
+div#text {
+    font-size:xx-large;
+    position:absolute;
+    top: 50px;
+}
+
+hr {
+   display: block;
+   position: relative;
+   padding: 0;
+   height: 0;
+   width: 100%;
+   max-height: 0;
+   font-size: 1px;
+   line-height: 0;
+   clear: both;
+   border: none;
+   border-top: 1px solid #aaaaaa;
+   border-bottom: 1px solid #ffffff;
+}
+
+hr#top { top: 30px; }
+hr#bottom { top: 90px; }
+
+table{
+    table-layout: fixed;
+    width: 300px;
+}
+
+col#first { width: 35%; }
+col#second { width: 65%; }
+
+th, td {
+    overflow: hidden;
+}
+
+.aligned { border-collapse: collapse; } /* remove cell spacing */
+.aligned td { padding: 0; color: #00d }             /* remove cell padding */
+.aligned td:first-child { text-align: right;}
+.aligned b { font-weight: normal; color: #d00; }

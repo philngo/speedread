@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<title>Speed Reader</title>
+<link rel="stylesheet" type="text/css" href="styles.css" />
+<script type="text/javascript" src="jquery-2.1.0.min.js"></script>
+<script src="popup.js"></script>
+</head>
+<body>
+<hr id="top"/>
+<hr id="bottom"/>
+<div id="buttons">
+    <input type="text" id="text_selection"/>
+    <button id="back">Back</button>
+    <button id="minus">-</button>
+    <button id="plus">+</button>
+    <button id="go">Start</button>
+</div>
+<div id="text">
+    <table class="aligned">
+        <colgroup>
+            <col id="first" span="1">
+            <col id="second "span="1">
+        </colgroup>
+        <tr><td id="first"></td><td id="second"><b></b></td></tr>
+    </table>
+</div>
+</body>
+</html>
