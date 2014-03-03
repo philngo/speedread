@@ -2,13 +2,15 @@ $( document ).ready(function() {
     var text = [];
     var offset = [];
     var text_length = 0;
-    var punctuation = [",",".","?","!",";",":"];
+    var punctuation_l = [".","?","!"];
+    var punctuation_sl = [",",";",":"];
     var back = 40;
     var i = 0;
     var delay = 10;
     var display = 70;
     var wait_s = 0;
     var wait_l = 250;
+    var wait_sl = 150;
     var display_time_remaining = 500;
     var wait_time_remaining = 0;
     var waiting = false;
@@ -49,9 +51,11 @@ $( document ).ready(function() {
             }
         } else {
             waiting = true;
-            if (punctuation.indexOf(text[i].slice(-1)) > -1) {
+            if (punctuation_l.indexOf(text[i].slice(-1)) > -1) {
                 console.log(text[i]);
                 wait_time_remaining = wait_l;
+            } else if (punctuation_sl.indexOf(text[i].slice(-1)) > -1){
+                wait_time_remaining = wait_sl;
             } else {
                 wait_time_remaining = wait_s;
             }
@@ -83,7 +87,12 @@ $( document ).ready(function() {
 });
 
 function displayWord(word, index) {
-    $('td#first').html(word.substring(0,index));
-    $('td#second').html("<b>" + word[index] + "</b>"+ word.substring(index+1));
+    var part1 = word.substring(0,index);
+    var part2 = word[index];
+    var part3 = word.substring(index + 1);
+    if (part1 != undefined)
+        $('td#first').html(part1);
+    if (part2 != undefined)
+        $('td#second').html("<b>" + part2 + "</b>"+ part3);
 }
 
