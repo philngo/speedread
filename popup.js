@@ -37,7 +37,13 @@ $( document ).ready(function() {
                 wait_time_remaining -= delay;
             } else {
                 i+=1;
-                i %= text_length;
+                if (i == text_length) {
+                    displayWord("DONE! ", 5);
+                    clearInterval(interval);
+                    interval = null;
+                    $("#go").html("Start");
+                    i = 0;
+                }
                 display_time_remaining = display;
                 waiting = false;
             }
