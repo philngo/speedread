@@ -3,8 +3,10 @@ $( document ).ready(function() {
     var text = [];
     var offset = [];
     var text_length = 0;
-    var punctuation_l = [".","?","!"];
-    var punctuation_sl = [",",";",":"];
+    var punctuation_l = [".","?","!","\""];
+    var punctuation_sl = [",","-",";",":",")"];
+    var exceptions = ["Mr.","Mrs.","Ms.", "Dr.", "A.B.","A.M.","Ave.","B.A.","B.C.","c.","co.","D.C.","d.","dept.","div.", "ed.","et al.", "fl.", "Jan.","Feb.","Mar.","Apr.","Jr.","Jun.","Gen.", "Gov.","grad.","Hon.","i.e.","in.","Inc.","Inst.","lat.","lon.","Lt.","Ltd.","M.D.","Mt.","Mus.","no.","Jul","Aug.","Sept.","Oct.","Nov.","Dec.","Op.","pop.","Rev.","pub.","R.N.","Sgt.","Sr.","St.","U.S.","Univ.","vs."];
+    var offset_key = [0,0,1,1,1,1,2,2,2,2,3,3,3,3,3,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7];
     var back = 40;
     var i = 0;
     var delay = 10;
@@ -55,7 +57,7 @@ $( document ).ready(function() {
                 i+=1;
                 if (i == text_length) {
                     var wpm = Math.round(text_length * 60000 / ticks / delay)
-                    displayWord("DONE!-WPM: " + wpm, 5);
+                    displayWord("DONE! - WPM: " + wpm, 6);
                     clearInterval(interval);
                     interval = null;
                     $("#go").html("Start");
@@ -69,16 +71,17 @@ $( document ).ready(function() {
             waiting = true;
             if (punctuation_l.indexOf(text[i].slice(-1)) > -1) {
                 console.log(text[i]);
-                wait_time_remaining = wait_l;
+                if (exceptions.indexOf(text[i]) < 0)
+                    wait_time_remaining = wait_l;
             } else if (punctuation_sl.indexOf(text[i].slice(-1)) > -1){
-                wait_time_remaining = wait_sl;
+                if (exceptions.indexOf(text[i]) < 0)
+                    wait_time_remaining = wait_sl;
             } else {
                 wait_time_remaining = wait_s;
             }
         }
     }
     function getSelectedText() {
-        var offset_key = [0,0,1,1,1,1,2,2,2,2,3,3,3,3,3,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7];
         text = $("#text_selection").val().split(" ");
         offset = text.map(function(word) {
             return offset_key[word.length];
