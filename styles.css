@@ -9,6 +9,7 @@ button {
 
 div#text {
     font-size:xx-large;
+    font-family:Arial,Helvetica,sans-serif;
     position:absolute;
     top: 50px;
 }
@@ -44,6 +45,6 @@ th, td {
 }
 
 .aligned { border-collapse: collapse; } /* remove cell spacing */
-.aligned td { padding: 0; color: #00d }             /* remove cell padding */
+.aligned td { padding: 0; color: #229 }             /* remove cell padding */
 .aligned td:first-child { text-align: right;}
 .aligned b { font-weight: normal; color: #d00; }
